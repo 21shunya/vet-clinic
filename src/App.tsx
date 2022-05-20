@@ -1,12 +1,23 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import { Content } from './Components/Content';
+import { Header } from './Components/Header';
+// import { Navbar } from './Components/NavBar';
 
-function App() {
+const  App: React.FC = () => {
+  const [todos, setTodos] = useState([]);
+
+  const addHandler = (title: string) => {
+    console.log('add', title);
+  };
+  
   return (
     <div className="App">
-      
+      {/* ggggggggggggg
+      <Navbar onAdd={addHandler} /> */}
+      <Header />
+      <Content />
     </div>
   );
-}
+};
 
 export default App;
