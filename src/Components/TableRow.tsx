@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { TableButtons } from './TableButtons';
 import { TableCell } from './TableCell';
 
 interface DocumentProps {
@@ -20,6 +21,7 @@ export const TableRow: React.FC<DocumentProps> = (props) => {
         {props.keys?.map((_key, index) => {
           return ( <TableCell key={index} item={JSON.stringify(props.document[_key as keyof object])}/>);
         })}
+        <TableButtons />
       </div>
     );
 };
