@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ButtonList } from './ButtonList';
+import { CreateForm } from './CreateForm';
 import { Table } from './Table';
 
 export const Content: React.FC = () => {
@@ -48,9 +49,7 @@ export const Content: React.FC = () => {
     <div className='content_wrapper'>
       <ButtonList />
       <Table keys={keys} tableData={tableData}/>
-      <div>
-        add new item
-      </div>
+      <CreateForm keys={keys} />
     </div>
   );
 };
