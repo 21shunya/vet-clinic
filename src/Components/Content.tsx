@@ -1,43 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import DataService from '../API/DataService';
 import { ButtonList } from './ButtonList';
 import { CreateForm } from './CreateForm';
 import { Table } from './Table';
 
 export const Content: React.FC = () => {
+  const [tableData, setData] = useState<object[]>([]);
 
-  const tableData = [
-    {
-      '_id': {
-        '$oid': '6245aae075bef986208c19a0'
-      },
-      'name': 'Igor',
-      'surname': 'Kotilevec',
-      'patronymic': 'Denisovich',
-      'position': 'Administrator',
-      'role': 'Admin'
-    },
-    {
-      '_id': {
-        '$oid': '6245aae075bef986208c19a1'
-      },
-      'name': 'Jim',
-      'surname': 'Halpert',
-      'patronymic': '',
-      'position': 'Doctor',
-      'role': 'Doctor'
-    },
-    {  '_id': {    
-      '$oid': '6245aae075bef986208c19a2'  },  
-    'name': 'Pam',  
-      
-    'surname': 'Beesley',  
-    'patronymic': 'Morgan',  
-    'role': 'User',  'animals': [    {      '$oid': '624ff0cf68674b3847f079dd'    },    {      '$oid': '624ea622069dbc1ba320ba07'    },    {      '$oid': '624ea622069dbc1ba320ba10'    },    {      '$oid': '624ea622069dbc1ba320ba11'    }  ]}
-  ];
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  async function fetchData() {
+    const response = await DataService.getAll();
+    setData(response) ;
+  }
 
   const keys: string[] = [];
   
   {tableData.map((document) => {
+    console.log('a', tableData, document);
     {Object.keys(document).map((item) => {
       if (keys.includes(item)) return;
       else keys.push(item);
