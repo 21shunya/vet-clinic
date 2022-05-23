@@ -1,9 +1,16 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import TableCtx from '../TableCtx';
 interface TableButtonProps {
   btnName: string;
 }
 
 export const TableSwitchingButton: React.FC<TableButtonProps> = (props) => {
-  return <button className='table-btn'>{ props.btnName }</button>;
+  
+  const { selectTable } = useContext(TableCtx);
+
+  return (
+    <button className='table-btn' onClick={selectTable.bind(this, props.btnName)}>
+      { props.btnName }
+    </button>
+  );
 };
