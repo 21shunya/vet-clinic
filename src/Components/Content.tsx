@@ -7,18 +7,15 @@ import { Table } from './Table';
 
 export const Content: React.FC = () => {
   const [tableData, setData] = useState<object[]>([]);
+  const [tableName, setTableName] = useState<string>('');
 
   useEffect(() => {
-    fetchData('Animals');
+    fetchData('animals');
   }, []);
 
   async function fetchData(value: string) {
-    value === 'Animals' ? setData(await DataService.getAllAnimals()) :  
-      value === 'Users' ? setData(await DataService.getAllUsers()) :
-        value === 'Clinic' ? setData(await DataService.getAllClinics()) : 
-          value === 'Appointment' ? setData(await DataService.getAllAppointments()) :
-            value === 'Services' ? setData(await DataService.getAllServices()) : 
-              setData([]);
+    setData(await DataService.getAll(value));
+    setTableName(value);
   }
 
   function selectTable(value: string) {
@@ -38,7 +35,7 @@ export const Content: React.FC = () => {
       <div className='content_wrapper'>
         <ButtonList/>
         <Table keys={keys} tableData={tableData}/>
-        <CreateForm keys={keys} />
+        <CreateForm keys={keys} tableName={tableName}/>
       </div>
     </TableCtx.Provider>
   );

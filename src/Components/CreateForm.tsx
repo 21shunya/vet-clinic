@@ -4,6 +4,7 @@ import { Input } from './Input';
 
 interface FormProps {
   keys: string[]
+  tableName: string
 }
 
 export const CreateForm: React.FC<FormProps> = (props) => {
@@ -18,7 +19,8 @@ export const CreateForm: React.FC<FormProps> = (props) => {
   }
 
   async function createDocument() {
-    await DataService.setAnimal(document);
+    await DataService.setDocument(props.tableName, document);
+    setDocument({});
   }
 
   return (
