@@ -10,9 +10,9 @@ interface FormProps {
 export const CreateForm: React.FC<FormProps> = (props) => {
   const [document, setDocument] = useState<Record<string, any>>({});
 
-  function addHandler(_key: string, event: React.ChangeEvent<HTMLInputElement>) {
+  function onChangeHandler(_key: string, _value: string) {
     const key = _key;
-    const value = event.target.value;
+    const value = _value;
     const newDocument = document;
     newDocument[key] = value;
     setDocument(newDocument);
@@ -26,7 +26,7 @@ export const CreateForm: React.FC<FormProps> = (props) => {
   return (
     <div className='create-form-wrapper'>
       {props.keys?.map((item, index) => {
-        return(<Input key={index} item={item} addHandler={addHandler} />);
+        return(<Input key={index} item={item} onChangeHandler={onChangeHandler} />);
       })}
       <button className='form-btn' onClick={createDocument}>Создать</button>
     </div>

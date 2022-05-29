@@ -31,4 +31,15 @@ export default class DataService {
     }
   }
 
+  static async updateDocument(tableName: string | undefined, id: string, document: Record<string, any>) {
+    try {
+      const response = await http.patch(`/${tableName}/` + id, {
+        ...document
+      });
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 }
