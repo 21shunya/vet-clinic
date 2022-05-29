@@ -27,12 +27,11 @@ export const Content: React.FC = () => {
 
   const keys: string[] = [];
   
-  {tableData.map((document) => {
+  tableData.map((document) => {
     {Object.keys(document).map((item) => {
-      if (keys.includes(item)) return;
-      else keys.push(item);
+      if (!keys.includes(item) && item !== '__v' && item !== '_id' ) return keys.push(item);
     });}
-  });}
+  });
 
   return (
     <TableCtx.Provider value={{ selectTable }}>
