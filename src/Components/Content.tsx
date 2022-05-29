@@ -34,7 +34,7 @@ export const Content: React.FC = () => {
     <TableCtx.Provider value={{ selectTable }}>
       <div className='content_wrapper'>
         <ButtonList/>
-        <Table keys={keys} tableData={tableData}/>
+        <Table keys={keys} tableData={tableData} tableName={tableName}/>
         <CreateForm keys={keys} tableName={tableName}/>
       </div>
     </TableCtx.Provider>

@@ -12,11 +12,19 @@ export default class DataService {
   }
 
   static async setDocument(tableName: string, document: Record<string, any>) {
-    console.log(document);
     try {
       const response = await http.post(`/${tableName}`, {
         ...document
       });
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  static async deleteOne(tableName: string | undefined, id: string) {
+    try {
+      const response = await http.delete(`/${tableName}/` + id);
       return response.data;
     } catch (e) {
       console.log(e);
