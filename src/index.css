@@ -12,15 +12,13 @@ body {
   background-image: url(../public/background.png);
   backdrop-filter: blur(20px);
   height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .App {
   display: flex;
   flex-direction: column;
   margin: 0 30px 0 30px;
-  
-  /* margin-right: 100px; */
 }
 
 
@@ -89,9 +87,11 @@ margin-top: 60px;
 .table-wrapper {
   display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: flex-start;
 align-items: flex-start;
+height: 800px;
 padding: 0px;
+overflow: auto;
 }
 
 .table-row-wrapper {
@@ -207,3 +207,45 @@ border: none;
   background: #E7EBE4;
   gap: 5px;
 }
+
+/*/////////////////////////////////////////*/
+
+.login-card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.login-card-content {
+  display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding: 48px 55px;
+gap: 60px;
+background: #DAEBCC;
+border-radius: 20px;
+}
+
+.login-input-wrapper {
+  display: flex;
+flex-direction: row;
+align-items: flex-end;
+padding: 0px;
+gap: 10px;
+
+width: 356px;
+height: 21px;
+font-size: 18px;
+line-height: 21px;
+color: #47523F;
+}
+
+.login-input {
+  width: 300px;
+height: 30px;
+border-bottom: 1px solid #47523F;
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+

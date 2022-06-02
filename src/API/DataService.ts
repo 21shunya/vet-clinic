@@ -42,4 +42,11 @@ export default class DataService {
     }
   }
 
+  static async doLogin(document: Record<string, any>): Promise<boolean> {
+
+    const response = await http.post('/login', {
+      ...document});
+
+    return response.data as boolean;
+  }
 }

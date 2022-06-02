@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DataService from '../API/DataService';
+import role from '../login';
 import TableCtx from '../TableCtx';
 import { ButtonList } from './ButtonList';
 import { CreateForm } from './CreateForm';
@@ -8,6 +9,8 @@ import { Table } from './Table';
 export const Content: React.FC = () => {
   const [tableData, setData] = useState<object[]>([]);
   const [tableName, setTableName] = useState<string>('');
+
+  console.log(role.get());
 
   useEffect(() => {
     fetchData('animals');

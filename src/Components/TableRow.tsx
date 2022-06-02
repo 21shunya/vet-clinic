@@ -14,7 +14,10 @@ interface DocumentProps {
 
 export const TableRow: React.FC<DocumentProps> = (props) => {
   async function onRemove() {
-    await DataService.deleteOne(props.tableName, props.document['_id' as keyof object]);
+    const shoudRemove = window.confirm('Точно удаляем??');
+    if(shoudRemove){
+      await DataService.deleteOne(props.tableName, props.document['_id' as keyof object]);
+    }
   }
 
   async function onUpdate(newDoc: object) {
